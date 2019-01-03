@@ -19,7 +19,7 @@ use cebe\openapi\spec\Type;
  * Implements property management and validation basics.
  *
  */
-abstract class SpecBaseObject implements SpecObjectInterface
+abstract class SpecBaseObject implements SpecObjectInterface, \JsonSerializable
 {
     private $_properties = [];
     private $_errors = [];
@@ -240,6 +240,11 @@ abstract class SpecBaseObject implements SpecObjectInterface
     public function __unset($name)
     {
         throw new ReadonlyPropertyException('Unsetting read-only property: ' . \get_class($this) . '::' . $name);
+    }
+
+    public function jsonSerialize()
+    {
+        return $this->_properties;
     }
 
     /**
