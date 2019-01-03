@@ -90,6 +90,7 @@ class Schema extends SpecBaseObject
             'externalDocs' => ExternalDocumentation::class,
             'example' => Type::ANY,
             'deprecated' => Type::BOOLEAN,
+            'enum' => [Type::ANY],
         ];
     }
 
